@@ -1,10 +1,49 @@
 import styled from 'styled-components'
 import Popup from 'reactjs-popup'
+import {TiThMenu} from 'react-icons/ti'
+import {FiLogOut} from 'react-icons/fi'
+
+export const LogoutIcon = styled(FiLogOut)`
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+    font-size: 20px;
+  }
+`
+export const LogoutText = styled.p`
+  color: ${prev => prev.btncolor};
+  border: solid 1px ${prev => prev.color};
+  padding: 5px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`
 
 export const Navbar = styled.nav`
   background-color: ${prev => prev.colors};
   color: ${prev => prev.colors};
   height: 10vh;
+`
+export const MenuContainer = styled.div`
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    font-size: 25px;
+    color: black;
+  }
+`
+export const MenuItemCont = styled.ul`
+  width: 40vw;
+  list-style: none;
+  color: ${prev => prev.bgcolors};
+  padding: 0;
+  margin: 0;
+  padding-top: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: ${props => props.bgcolors};
 `
 
 export const NavListContainer = styled.ul`
@@ -39,21 +78,15 @@ export const NavProfileImg = styled.img`
 export const ModeBtn = styled.button`
   align-self: center;
   border: none;
-  padding: 5px;
   font-weight: bold;
   background-color: inherit;
 `
 
-export const LogoutBtn = styled(ModeBtn)`
-  color: ${prev => prev.color};
-  border: solid 1px ${prev => prev.color};
-  border-radius: 6px;
-`
+export const LogoutBtn = styled(ModeBtn)``
 
 export const StyledPopup = styled(Popup)`
-  &-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+  height: 100vh;
+  width: 100vw;
 `
 
 export const Confirm = styled.button`
@@ -88,12 +121,19 @@ export const Logout = styled.button`
   }
 `
 
-export const MobileDiv = styled.div`
-  display: inline;
+export const MenuBtn = styled(TiThMenu)`
+  display: block;
+  font-size: 22px;
+  color: black;
   @media screen and (min-width: 768px) {
     display: none;
   }
 `
+export const MenuIcon = styled.button`
+  background-color: inherit;
+  border: none;
+`
+
 export const Close = styled.button`
   border: 1px solid ${props => (props.isDark ? '#cccccc' : '#313131')};
   background-color: transparent;

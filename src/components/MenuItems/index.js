@@ -16,7 +16,7 @@ import {
 } from './styled'
 import {FlexRowContainer} from '../VideoItemDetails/style'
 
-const menuItems = [
+export const menuItems = [
   {id: 'HOME', path: '/', name: 'Home', Icon: AiFillHome},
   {
     id: 'TRENDING',

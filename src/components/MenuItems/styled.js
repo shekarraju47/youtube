@@ -34,17 +34,21 @@ export const Name = styled.p`
   font-weight: ${props => (props.isSelect ? 'bold' : 'normal')};
 `
 export const LeftContainer = styled.ul`
-  background-color: ${prev => prev.colors};
-  color: ${prev => prev.colors};
-  padding: 0;
-  height: 90vh;
-  width: 20%;
-  margin: 0;
-  list-style: none;
-  padding-top: 2%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+    background-color: ${prev => prev.colors};
+    color: ${prev => prev.colors};
+    padding: 0;
+    height: 90vh;
+    width: 20%;
+    margin: 0;
+    list-style: none;
+    padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `
 
 export const BottomCont = styled.div`

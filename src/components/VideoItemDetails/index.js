@@ -150,7 +150,7 @@ class VideoItemDetails extends Component {
               color={colors}
               bgColor={bgColors}
             >
-              <VideoDetailsContainer isDark={isDark}>
+              <VideoDetailsContainer>
                 <ReactPlayerCont>
                   <ReactPlayer width="100%" url={videoUrl} />
                 </ReactPlayerCont>

@@ -1,17 +1,29 @@
 import {Component} from 'react'
 import Cookie from 'js-cookie'
+import {AiOutlineClose, AiOutlineSearch} from 'react-icons/ai'
 import Loader from 'react-loader-spinner'
 import Context from '../../context/Context'
 import Header from '../Header/index'
 import HomeItems from '../HomeItems'
 import MenuItems from '../MenuItems/index'
+
 import {
   HomeMainContainer,
   LoaderContainer,
   SuccessContainer,
   VideosContainer,
+  BannerContainer,
+  BannerImg,
+  BannerCloseBtn,
+  BannerLogo,
+  SearchContainer,
+  SearchInput,
+  SearchBtn,
+  BannerCardCont,
 } from './styled'
+import {VideoFlexRow} from '../VideoItemDetails/style'
 import {NotFoundCont, NotImg, NotFoundHeading} from '../NotFound/styled'
+import {Para} from '../HomeItems/styled'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -24,6 +36,9 @@ class Home extends Component {
   state = {
     api: apiStatusConstants.initial,
     Videos: [],
+    banner: true,
+    search: '',
+    searchInput: '',
   }
 
   componentDidMount() {
@@ -31,9 +46,10 @@ class Home extends Component {
   }
 
   getData = async () => {
+    const {search} = this.state
     this.setState({api: apiStatusConstants.inProgress})
     const token = Cookie.get('jwt_token')
-    const url = `https://apis.ccbp.in/videos/all?search=`
+    const url = `https://apis.ccbp.in/videos/all?search=${search}`
     const option = {
       method: 'GET',
       headers: {
@@ -82,24 +98,75 @@ class Home extends Component {
     this.setState(videos)
   }
 
+  closeBanner = () => {
+    this.setState({banner: false})
+  }
+
+  searchInput = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  onClickSearch = () => {
+    const {searchInput} = this.state
+    this.setState({search: searchInput}, this.getData)
+  }
+
   success = () => (
     <Context.Consumer>
       {value => {
-        const {Videos} = this.state
+        const {Videos, banner, searchInput} = this.state
         const {isDark} = value
         const colors = isDark ? '#ffffff' : '#0f0f0f'
         const bgColors = isDark ? '#181818' : '#ffffff'
+
         return (
           <SuccessContainer
+            banner={banner}
             data-testid="home"
             color={colors}
             bgColor={bgColors}
+            isDark={isDark}
           >
-            <VideosContainer isDark={isDark}>
-              {Videos.map(item => (
-                <HomeItems items={item} key={item.id} />
-              ))}
-            </VideosContainer>
+            <div>
+              {banner && (
+                <BannerContainer data-testid="banner">
+                  <BannerCardCont>
+                    <BannerLogo
+                      alt="nxt watch logo"
+                      src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                    />
+                    <Para>Buy Nxt Watch Premium prepaid plans with UPI</Para>
+                    <button type="button">GET IT NOW</button>
+                  </BannerCardCont>
+                  <BannerCloseBtn
+                    data-testid="close"
+                    onClick={this.closeBanner}
+                    type="button"
+                  >
+                    <AiOutlineClose />
+                  </BannerCloseBtn>
+                </BannerContainer>
+              )}
+              <SearchContainer>
+                <SearchInput
+                  value={searchInput}
+                  onChange={this.searchInput}
+                  type="search"
+                />
+                <SearchBtn
+                  data-testid="searchButton"
+                  onClick={this.onClickSearch}
+                  type="button"
+                >
+                  <AiOutlineSearch />
+                </SearchBtn>
+              </SearchContainer>
+              <VideosContainer isDark={isDark}>
+                {Videos.map(item => (
+                  <HomeItems items={item} key={item.id} />
+                ))}
+              </VideosContainer>
+            </div>
           </SuccessContainer>
         )
       }}

@@ -10,6 +10,8 @@ export const TrendingHeading = styled.h1`
   font-size: 25px;
   color: ${props => props.colors};
   margin-left: 10px;
+  @media screen and (max-width: 768px) {
+  }
 `
 
 export const TrendingVideosContainer = styled.div`
@@ -18,8 +20,12 @@ export const TrendingVideosContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     overflow-y: auto;
     padding: 0;
+    @media screen and (max-width: 768px) {
+      align-items: center;
+    }
   }
 
   &::-webkit-scrollbar {

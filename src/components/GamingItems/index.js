@@ -1,5 +1,5 @@
 import {GameListContainer, Linked, GameImg} from './styled'
-import {Title} from '../HomeItems/styled'
+import {Title, Para} from '../HomeItems/styled'
 
 const GamingItem = props => {
   const {items, isDark} = props
@@ -9,7 +9,7 @@ const GamingItem = props => {
       <GameListContainer isDark={isDark}>
         <GameImg alt="video thumbnail" src={thumbNailUrl} />
         <Title>{title}</Title>
-        <p>{viewCount} Watching Worldwide</p>
+        <Para>{viewCount} Watching Worldwide</Para>
       </GameListContainer>
     </Linked>
   )

@@ -6,12 +6,12 @@ import Context from '../../context/Context'
 import Header from '../Header/index'
 import GamingItem from '../GamingItems'
 import MenuItems from '../MenuItems/index'
-import {GamingMainCard} from '../GamingItems/styled'
 import {TrendingHeading} from '../Trending/styled'
 import {
   HomeMainContainer,
   LoaderContainer,
   VideosContainer,
+  SuccessContainer,
 } from '../Home/styled'
 import {FlexRowContainer} from '../VideoItemDetails/style'
 import {NotFoundCont, NotImg, NotFoundHeading} from '../NotFound/styled'
@@ -91,21 +91,24 @@ class Gaming extends Component {
         const colors = isDark ? '#ffffff' : '#000000'
         const bgColors = isDark ? '#0f0f0f' : '#ffffff'
         return (
-          <GamingMainCard
-            data-testid="gaming"
+          <SuccessContainer
             color={colors}
             bgColor={bgColors}
+            isDark={isDark}
+            data-testid="gaming"
           >
-            <FlexRowContainer>
-              <SiYoutubegaming />
-              <TrendingHeading colors={colors}>Gaming</TrendingHeading>
-            </FlexRowContainer>
-            <VideosContainer isDark={isDark}>
-              {Videos.map(item => (
-                <GamingItem isDark={isDark} items={item} key={item.id} />
-              ))}
+            <VideosContainer>
+              <FlexRowContainer>
+                <SiYoutubegaming />
+                <TrendingHeading colors={colors}>Gaming</TrendingHeading>
+              </FlexRowContainer>
+              <VideosContainer isDark={isDark}>
+                {Videos.map(item => (
+                  <GamingItem isDark={isDark} items={item} key={item.id} />
+                ))}
+              </VideosContainer>
             </VideosContainer>
-          </GamingMainCard>
+          </SuccessContainer>
         )
       }}
     </Context.Consumer>

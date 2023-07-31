@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 import {BiLike, BiDislike} from 'react-icons/bi'
 import {RiPlayListAddLine} from 'react-icons/ri'
-import {TrendingVideosContainer} from '../Trending/styled'
 
 export const VideoTitle = styled.p`
   font-size: 16px;
@@ -64,9 +63,15 @@ export const SaveBtnIcon = styled(RiPlayListAddLine)`
 
 export const ReactPlayerCont = styled.div``
 
-export const VideoDetailsContainer = styled(TrendingVideosContainer)`
+export const VideoDetailsContainer = styled.div`
   padding-top: 20px;
   padding: 20px;
+  margin-top: 20%;
+  @media screen and (max-width: 768px) {
+    align-self: center;
+    width: 100%;
+    padding: 20px;
+  }
 `
 
 export const Line = styled.hr`
