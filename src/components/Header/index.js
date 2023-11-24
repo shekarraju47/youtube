@@ -20,6 +20,7 @@ import {
   MenuContainer,
   MenuItemCont,
   LogoutText,
+  LogoutPopup,
   MenuIcon,
 } from './style'
 
@@ -108,15 +109,15 @@ const Header = props => (
                 <Popup
                   modal
                   trigger={
-                    <button type="button">
+                    <LogoutBtn type="button">
                       <LogoutIcon />
                       <LogoutText btncolor={btncolor}>Logout</LogoutText>
-                    </button>
+                    </LogoutBtn>
                   }
                   className="logout-popup"
                 >
                   {close => (
-                    <button type="button">
+                    <LogoutPopup isDark={isDark} type="button">
                       <p>Are you sure, you want to logout</p>
                       <div>
                         <button type="button" onClick={() => close()}>
@@ -126,7 +127,7 @@ const Header = props => (
                           Confirm
                         </button>
                       </div>
-                    </button>
+                    </LogoutPopup>
                   )}
                 </Popup>
               </NavListItem>

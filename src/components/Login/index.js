@@ -91,6 +91,10 @@ class Login extends Component {
               mainBgColor={mainBgColor}
               textColors={textColors}
             >
+              <p>
+                Username: rahul <br />
+                Password: rahul@2021
+              </p>
               <FormContainer bgcolors={bgcolors} onSubmit={this.onSubmit}>
                 <LogoImg alt="website logo" src={imgUrl} />
                 <Label htmlFor="name">USERNAME</Label>
@@ -120,6 +124,8 @@ class Login extends Component {
                 <LoginBtn type="submit">Login</LoginBtn>
                 {showError && <ErrorMsg>*{errorMsg}</ErrorMsg>}
               </FormContainer>
+              <br />
+              <p>*Note Only For Testing</p>
             </LoginMainContainer>
           )
         }}

@@ -13,7 +13,6 @@ import {
   SuccessContainer,
   VideosContainer,
   BannerContainer,
-  BannerImg,
   BannerCloseBtn,
   BannerLogo,
   SearchContainer,
@@ -21,7 +20,6 @@ import {
   SearchBtn,
   BannerCardCont,
 } from './styled'
-import {VideoFlexRow} from '../VideoItemDetails/style'
 import {NotFoundCont, NotImg, NotFoundHeading} from '../NotFound/styled'
 import {Para} from '../HomeItems/styled'
 
@@ -150,6 +148,7 @@ class Home extends Component {
               <SearchContainer>
                 <SearchInput
                   value={searchInput}
+                  name="search"
                   onChange={this.searchInput}
                   type="search"
                 />

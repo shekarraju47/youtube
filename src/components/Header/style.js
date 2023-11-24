@@ -14,6 +14,7 @@ export const LogoutText = styled.p`
   color: ${prev => prev.btncolor};
   border: solid 1px ${prev => prev.color};
   padding: 5px;
+  cursor: pointer;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -80,6 +81,14 @@ export const ModeBtn = styled.button`
   border: none;
   font-weight: bold;
   background-color: inherit;
+`
+
+export const LogoutPopup = styled.button`
+  background-color: ${prop => (prop.isDark ? '#1e293b' : '#f9f9f9')};
+  color: ${prop => (prop.isDark ? 'white' : 'black')};
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
 `
 
 export const LogoutBtn = styled(ModeBtn)``

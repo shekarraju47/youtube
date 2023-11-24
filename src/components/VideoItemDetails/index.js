@@ -152,7 +152,7 @@ class VideoItemDetails extends Component {
             >
               <VideoDetailsContainer>
                 <ReactPlayerCont>
-                  <ReactPlayer width="100%" url={videoUrl} />
+                  <ReactPlayer controls width="100%" url={videoUrl} />
                 </ReactPlayerCont>
                 <Title>{title}</Title>
                 <LikeAndMoreDetailCont>
