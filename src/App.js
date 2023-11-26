@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {Switch, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 import ProtectedPath from './ProtectedPath/ProtectedPath'
 import Login from './components/Login'
 import Context from './context/Context'
@@ -36,30 +36,32 @@ class App extends Component {
   render() {
     const {isDark, savedVideos} = this.state
     return (
-      <Context.Provider
-        value={{
-          isDark,
-          changeTheme: this.changeTheme,
-          savedVideos,
-          addToSaved: this.addToSaved,
-          removeVideo: this.removeVideo,
-        }}
-      >
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <ProtectedPath exact path="/" component={Home} />
-          <ProtectedPath
-            exact
-            path="/videos/:id"
-            component={VideoItemDetails}
-          />
-          <ProtectedPath exact path="/trending" component={Trending} />
-          <ProtectedPath exact path="/gaming" component={Gaming} />
-          <ProtectedPath exact path="/saved-videos" component={SavedVideos} />
-          <Route path="/not-found" component={NotFound} />
-          <Redirect to="/not-found" />
-        </Switch>
-      </Context.Provider>
+      <BrowserRouter basename="youtube">
+        <Context.Provider
+          value={{
+            isDark,
+            changeTheme: this.changeTheme,
+            savedVideos,
+            addToSaved: this.addToSaved,
+            removeVideo: this.removeVideo,
+          }}
+        >
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <ProtectedPath exact path="/" component={Home} />
+            <ProtectedPath
+              exact
+              path="/videos/:id"
+              component={VideoItemDetails}
+            />
+            <ProtectedPath exact path="/trending" component={Trending} />
+            <ProtectedPath exact path="/gaming" component={Gaming} />
+            <ProtectedPath exact path="/saved-videos" component={SavedVideos} />
+            <Route path="/not-found" component={NotFound} />
+            <Redirect to="/not-found" />
+          </Switch>
+        </Context.Provider>
+      </BrowserRouter>
     )
   }
 }
